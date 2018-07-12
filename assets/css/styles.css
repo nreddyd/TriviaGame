@@ -1,0 +1,26 @@
+.lead,
+#time,
+#container {
+  text-align: center;
+}
+
+h1 {
+  padding: 30px;
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 70px;
+  text-align: center;
+  color: blue;
+}
+
+#container {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 28px;
+}
+
+.lead {
+  font-family: "Black And White Picture", sans-serif;
+}
+
+#time {
+  font-family: "IM Fell DW Pica", serif;
+}
