@@ -1,3 +1,7 @@
+body {
+  background-image: url("../images/BGimage.jpg");
+}
+
 .lead,
 #time,
 #container {
@@ -5,22 +9,43 @@
 }
 
 h1 {
-  padding: 30px;
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 70px;
+  padding: 20px;
+  font-family: "Gaegu", cursive;
+  font-size: 100px;
   text-align: center;
-  color: blue;
+  color: rgb(28, 172, 182);
+
+  margin-top: 10px;
 }
 
 #container {
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 28px;
+  font-family: "Arvo", cursive;
+  font-size: 18px;
+  color: rgb(214, 228, 17);
 }
 
 .lead {
-  font-family: "Black And White Picture", sans-serif;
+  font-family: "Bad Script", sans-serif;
+  font-size: 24px;
+  color: aqua;
 }
 
 #time {
+  visibility: hidden;
   font-family: "IM Fell DW Pica", serif;
+  font-size: 18px;
+  color: rgb(255, 187, 0);
+}
+
+img {
+  width: 650px;
+  height: 350px;
+}
+button {
+  width: 200px;
+}
+
+h2 {
+  font-family: "Cabin Sketch", cursive;
+  color: thistle;
 }

@@ -1,3 +1,6 @@
+var audioElement = document.createElement("audio");
+var resultaudio = document.createElement("audio");
+
 // object to store question, options, answer and image
 var trivia = [
   {
@@ -5,7 +8,7 @@ var trivia = [
       "Who decides to whiten his teeth before going out on a first date with a girl he's had a crush on for some time?",
     options: ["Joey", "Ross", "Chandler", "Gunther"],
     answer: "Ross",
-    image: "assets/images/Ross.png"
+    image: "assets/images/Ross.gif"
   },
   {
     question:
@@ -17,7 +20,7 @@ var trivia = [
       "Smelly Cat, smelly cat"
     ],
     answer: "Smelly Cat, smelly cat",
-    image: "assets/images/phoebe.jpg"
+    image: "assets/images/phoebe.gif"
   },
   {
     question: "Who plays Chandler?",
@@ -28,29 +31,65 @@ var trivia = [
       "Joshua Jackson"
     ],
     answer: "Matthew Perry",
-    image: "assets/images/chandler.png"
+    image: "assets/images/chandler.gif"
   },
   {
     question: "What was the name of Chandler's annoying ex-girlfriend?",
-    options: ["Emmely", "Janice", "Susan", "Q4option4"],
+    options: ["Emmely", "Janice", "Susan", "Monica"],
     answer: "Janice",
-    image: "assets/images/girlfriend.jpg"
+    image: "assets/images/janice.gif"
   },
   {
     question: "Who gave birth to a child named Emma?",
     options: ["Carol", "Rachel", "Monica", "Phoebe"],
     answer: "Rachel",
-    image: "assets/images/emma.jpg"
+    image: "assets/images/emma.gif"
+  },
+  {
+    question: "What is the name of Ross's son?",
+    options: ["Adam", "Eden", "Den", "Ben"],
+    answer: "Ben",
+    image: "assets/images/Ben.gif"
+  },
+  {
+    question: "Monica is a _______ freak",
+    options: ["Mean", "Loud", "Neat", "Cool"],
+    answer: "Neat",
+    image: "assets/images/Monica.gif"
+  },
+  {
+    question: "What is the name of the coffee house where the gang hangs out?",
+    options: ["Central Perk", "Central Park", "Coffee Hut", "Coffee Perk"],
+    answer: "Central Perk",
+    image: "assets/images/CentralPerk.gif"
+  },
+  {
+    question: "Which friend directed the episode 'Since You've Been Gone'?",
+    options: [
+      "Matt LeBlanc",
+      "David Schwimmer",
+      "Matthew Perry",
+      "Joshua Jackson"
+    ],
+    answer: "David Schwimmer",
+    image: "assets/images/David.gif"
+  },
+  {
+    question: "Finally, Chandler and Joey worry that they ____ too much.",
+    options: ["Play fooseball", "watch TV", "drink", "Hug"],
+    answer: "Hug",
+    image: "assets/images/hug.gif"
   }
 ];
 
 var game = {
-  count: 20,
+  count: 5,
   triviaindex: 0,
   currentanswer: "",
   correctanswers: 0,
   wronganswers: 0,
   answered: 0,
+
   timer: function() {
     console.log(game.count);
     game.count--;
@@ -59,41 +98,38 @@ var game = {
       game.timeup();
     }
   },
+
   displayquestion: function() {
     TriviaID = setInterval(this.timer, 1000);
     var question = $("<div></div>");
     question.text(trivia[game.triviaindex].question);
     $("#container").html(question);
-    var option1 = $(
-      "<input class='answercheckbox' id='option1' type='checkbox' name='option' value='option1'>"
-    );
+    var option1 = $("<input type='checkbox' name='option' value='option1'>");
+    option1.addClass("answercheckbox");
     $("#container").append(option1);
-    var option1label = $("<label id='option1label'></label>");
+    var option1label = $("<label>");
     option1label.text(trivia[game.triviaindex].options[0]);
     $("#container").append(option1label);
     $("#container").append("<br>");
 
-    var option2 = $(
-      "<input class='answercheckbox' id='option2' type='checkbox' name='option' value='option2'>"
-    );
+    var option2 = $("<input type='checkbox' name='option' value='option2'>");
+    option2.addClass("answercheckbox");
     $("#container").append(option2);
-    var option2label = $("<label id='option2label'></label>");
+    var option2label = $("<label>");
     option2label.text(trivia[game.triviaindex].options[1]);
     $("#container").append(option2label);
     $("#container").append("<br>");
 
-    var option3 = $(
-      "<input class='answercheckbox' id='option3' type='checkbox' name='option' value='option3'>"
-    );
+    var option3 = $("<input type='checkbox' name='option' value='option3'>");
+    option3.addClass("answercheckbox");
     $("#container").append(option3);
-    var option3label = $("<label id='option3label'></label>");
+    var option3label = $("<label>");
     option3label.text(trivia[game.triviaindex].options[2]);
     $("#container").append(option3label);
     $("#container").append("<br>");
 
-    var option4 = $(
-      "<input class='answercheckbox' id='option4' type='checkbox' name='option' value='option4'>"
-    );
+    var option4 = $("<input type='checkbox' name='option' value='option4'>");
+    option4.addClass("answercheckbox");
     $("#container").append(option4);
     var option4label = $("<label id='option4label'></label>");
     option4label.text(trivia[game.triviaindex].options[3]);
@@ -104,12 +140,12 @@ var game = {
       game.currentanswer = $(this)
         .next("label")
         .text();
-
       game.clicked();
     });
   },
+
   nextquestion: function() {
-    game.count = 20;
+    game.count = 5;
     $("#counter").text(game.count);
     game.triviaindex++;
     game.displayquestion();
@@ -118,41 +154,60 @@ var game = {
   timeup: function() {
     clearInterval(TriviaID);
     $("#counter").text(game.count);
-    $("#container").html("<h1> Timeout </h1>");
-    $("#container").append(
-      "<br><p>" + trivia[game.triviaindex].answer + "</p>"
+    var timeout = $("<div>");
+    var result = $("<h2>");
+    result.text("Timeout");
+    timeout.append(result);
+    timeout.append(
+      "<p> Answer is : " + trivia[game.triviaindex].answer + "</p>"
     );
-
-    $("#container").append(
-      "<br><img src=" + trivia[game.triviaindex].image + ">"
-    );
+    timeout.append("<img src=" + trivia[game.triviaindex].image + ">");
+    $("#container").html(timeout);
 
     if (game.triviaindex < trivia.length - 1) {
-      setInterval(game.nextquestion, 3000);
+      setTimeout(game.nextquestion, 3000);
     } else {
-      setInterval(game.displayresult, 3000);
+      setTimeout(game.displayresult, 3000);
     }
   },
   displayresult: function() {
+    clearInterval(TriviaID);
     game.count = 0;
     $("#counter").text(game.count);
 
-    $("#container").html("<p>correct answers " + game.correctanswers + "<p>");
-    $("#container").append("<p>wrong answer " + game.wronganswers + "<p>");
-    $("#container").append("<p>unanswerd " + (5 - game.answered) + "<p>");
-    // var restart = $("<button type="button" class="btn btn-success" id="start">Start</button>");
-    var restart = $("<button id='restart'>");
-    restart.id;
+    var gameover = $("<div>");
+    var results = $("<h2>");
+    if (game.correctanswers >= 8) {
+      results.text("You Won");
+      audioElement.pause();
+      resultaudio.setAttribute("src", "assets/music/win.mp3");
+      resultaudio.play();
+    } else {
+      results.text("You Loose");
+      audioElement.pause();
+      resultaudio.setAttribute("src", "assets/music/loose.mp3");
+      resultaudio.play();
+    }
+    gameover.append(results);
+    gameover.append("<p>Correct Answers : " + game.correctanswers + "</p>");
+    gameover.append("<p>Wrong Answers : " + game.wronganswers + "</p>");
+    gameover.append(
+      "<p>Unanswerd : " + (trivia.length - game.answered) + "</p>"
+    );
+    gameover.append("<br>");
+    $("#container").html(gameover);
+
+    var restart = $("<button>");
     restart.addClass("btn btn-success restart");
-    restart.text("Retake the quize");
+    restart.text("Start Over");
     $("#container").append(restart);
 
     $(".restart").on("click", function() {
       game.restart();
     });
   },
+
   clicked: function() {
-    console.log("clicked");
     clearInterval(TriviaID);
     $("#counter").text(game.count);
 
@@ -165,16 +220,16 @@ var game = {
 
     if (game.currentanswer === trivia[game.triviaindex].answer) {
       game.correctanswers++;
-      console.log("before display answer");
+      var output = $("<div>");
+      var result = $("<h2>");
+      result.text("Correct Answer");
+      output.append(result);
+      output.append(
+        "<p> Answer is : " + trivia[game.triviaindex].answer + "</p>"
+      );
+      output.append("<img src=" + trivia[game.triviaindex].image + ">");
+      $("#container").html(output);
 
-      $("#container").html("<h1>Correct Answer</h1>");
-      $("#container").append(
-        "<br><p>" + trivia[game.triviaindex].answer + "</p>"
-      );
-      $("#container").append(
-        "<br><img src=" + trivia[game.triviaindex].image + ">"
-      );
-      console.log("after display answer");
       if (game.triviaindex < trivia.length - 1) {
         setTimeout(game.nextquestion, 3000);
       } else {
@@ -182,14 +237,15 @@ var game = {
       }
     } else {
       game.wronganswers++;
-      $("#container").html("<h1>Wrong Answer</h1>");
-      $("#container").append(
-        "<br><p>" + trivia[game.triviaindex].answer + "</p>"
+      var output = $("<div>");
+      var result = $("<h2>");
+      result.text("Wrong Answer");
+      output.append(result);
+      output.append(
+        "<p> Answer is : " + trivia[game.triviaindex].answer + "</p>"
       );
-
-      $("#container").append(
-        "<br><img src=" + trivia[game.triviaindex].image + ">"
-      );
+      output.append("<img src=" + trivia[game.triviaindex].image + ">");
+      $("#container").html(output);
 
       if (game.triviaindex < trivia.length - 1) {
         setTimeout(game.nextquestion, 3000);
@@ -198,9 +254,10 @@ var game = {
       }
     }
   },
+
   restart: function() {
     console.log("inside restart");
-    game.count = 20;
+    game.count = 5;
     game.triviaindex = 0;
     game.currentanswer = "";
     game.correctanswers = 0;
@@ -209,6 +266,11 @@ var game = {
     game.displayquestion();
   }
 };
+
 $("#start").on("click", function() {
+  $("#time").css("visibility", "visible");
+  audioElement.setAttribute("src", "assets/music/Friends.mp3");
+  audioElement.loop = true;
+  audioElement.play();
   game.displayquestion();
 });
