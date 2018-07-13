@@ -263,6 +263,9 @@ var game = {
     game.correctanswers = 0;
     game.wronganswers = 0;
     game.answered = 0;
+    audioElement.setAttribute("src", "assets/music/Friends.mp3");
+    audioElement.loop = true;
+    audioElement.play();
     game.displayquestion();
   }
 };
