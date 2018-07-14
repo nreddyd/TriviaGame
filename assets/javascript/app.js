@@ -43,7 +43,7 @@ var trivia = [
     question: "Who gave birth to a child named Emma?",
     options: ["Carol", "Rachel", "Monica", "Phoebe"],
     answer: "Rachel",
-    image: "assets/images/emma.gif"
+    image: "assets/images/Emma.gif"
   },
   {
     question: "What is the name of Ross's son?",
