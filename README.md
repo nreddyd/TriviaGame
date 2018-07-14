@@ -1,27 +1,26 @@
 # TriviaGame
 
-##Description:
-------------------
-The Trivia game is built based on Friends TV show multiple choice questions. 
+## ##Description:
+
+The Trivia game is built based on Friends TV show multiple choice questions.
 
 Use the below link to play the game : https://nreddyd.github.io/TriviaGame/
 
-##Instructions :
-------------------
+## ##Instructions :
+
 You will have 10 questions to answer.
 
-You will be given one question at a time with 5 seconds to answer each question.
+You will be given one question at a time with 10 seconds to answer each question.
 
- When you select the answer/dont answer the question in 5 seconds, a screen with the result and the right answer will be shown. After a few seconds, the next question will be displayed.
- 
+When you select the answer/dont answer the question in 10 seconds, a screen with the result and the right answer will be shown. After a few seconds, the next question will be displayed.
+
 Get atleast 8 Right Answers to win the game.
 
 Turn on the sound for Best Experience.
 
-##File Structure :
---------------------
-```
+## ##File Structure :
 
+```
 ├── assets
 |  ├── css
 |  |  └── reset.css
@@ -56,3 +55,4 @@ BootStrap
 Javascript
 Jquery
 GoogleFonts
+```

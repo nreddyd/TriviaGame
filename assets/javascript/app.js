@@ -83,7 +83,7 @@ var trivia = [
 ];
 
 var game = {
-  count: 5,
+  count: 10,
   triviaindex: 0,
   currentanswer: "",
   correctanswers: 0,
@@ -145,7 +145,7 @@ var game = {
   },
 
   nextquestion: function() {
-    game.count = 5;
+    game.count = 10;
     $("#counter").text(game.count);
     game.triviaindex++;
     game.displayquestion();
@@ -257,7 +257,7 @@ var game = {
 
   restart: function() {
     console.log("inside restart");
-    game.count = 5;
+    game.count = 10;
     game.triviaindex = 0;
     game.currentanswer = "";
     game.correctanswers = 0;
