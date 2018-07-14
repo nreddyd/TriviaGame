@@ -56,5 +56,3 @@ BootStrap
 Javascript
 Jquery
 GoogleFonts
-=======
->>>>>>> 0172bf06e74c4b3fa99904dae80f77f8fe9a5220
